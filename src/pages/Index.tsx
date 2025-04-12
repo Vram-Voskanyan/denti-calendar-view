@@ -12,7 +12,6 @@ import { fetchDentists, fetchAvailability, bookAppointment } from "@/services/ap
 import { formatDate } from "@/utils/dateUtils";
 import { Dentist, AppointmentResponse, Patient } from "@/services/api";
 import { Card, CardContent } from "@/components/ui/card";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Index = () => {
   // State for calendar
@@ -132,7 +131,7 @@ const Index = () => {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Calendar and Time Slots Section */}
         <div className="lg:col-span-2">
-          <Card className="shadow-md">
+          <Card className="shadow-md mb-4">
             <CardContent className="p-0">
               <CalendarHeader
                 currentDate={currentDate}
@@ -153,24 +152,20 @@ const Index = () => {
                 </div>
               </div>
               
-              <Tabs defaultValue="calendar" className="w-full">
-                <div className="px-4 border-b border-dentist-border">
-                  <TabsList className="grid w-full max-w-md grid-cols-2">
-                    <TabsTrigger value="calendar">Calendar</TabsTrigger>
-                    <TabsTrigger value="times">Available Times</TabsTrigger>
-                  </TabsList>
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4">
+                  <h3 className="text-lg font-medium mb-2">Select Date</h3>
+                  <div className="max-w-xs mx-auto">
+                    <MonthView
+                      currentDate={currentDate}
+                      selectedDate={selectedDate}
+                      onDateSelect={handleDateSelect}
+                    />
+                  </div>
                 </div>
                 
-                <TabsContent value="calendar" className="mt-0">
-                  <MonthView
-                    currentDate={currentDate}
-                    selectedDate={selectedDate}
-                    onDateSelect={handleDateSelect}
-                  />
-                </TabsContent>
-                
-                <TabsContent value="times" className="mt-0 p-4">
-                  <h3 className="text-lg font-medium mb-3">
+                <div className="p-4 border-t md:border-t-0 md:border-l border-dentist-border">
+                  <h3 className="text-lg font-medium mb-2">
                     Available Time Slots for {format(selectedDate, "MMMM d, yyyy")}
                   </h3>
                   {isLoadingSlots ? (
@@ -184,8 +179,8 @@ const Index = () => {
                       onTimeSelect={handleTimeSelect}
                     />
                   )}
-                </TabsContent>
-              </Tabs>
+                </div>
+              </div>
             </CardContent>
           </Card>
         </div>

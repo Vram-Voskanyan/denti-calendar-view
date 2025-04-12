@@ -10,7 +10,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
-import { Calendar, Stethoscope } from "lucide-react";
+import { Calendar, Stethoscope, UserCog } from "lucide-react";
 
 const Header = () => {
   return (
@@ -29,6 +29,16 @@ const Header = () => {
                   <span className="flex items-center">
                     <Calendar className="mr-2 h-4 w-4" />
                     Appointments
+                  </span>
+                </NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link to="/doctors/appointments">
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                  <span className="flex items-center">
+                    <UserCog className="mr-2 h-4 w-4" />
+                    Doctors
                   </span>
                 </NavigationMenuLink>
               </Link>

@@ -44,7 +44,7 @@ const MonthView: React.FC<MonthViewProps> = ({
         {weekDays.map((day) => (
           <div
             key={day}
-            className="p-2 text-center text-sm font-medium text-gray-500"
+            className="p-1 text-center text-xs font-medium text-gray-500"
           >
             {day}
           </div>
@@ -63,7 +63,7 @@ const MonthView: React.FC<MonthViewProps> = ({
             <div
               key={index}
               className={cn(
-                "p-1 border-b border-r border-dentist-border calendar-day",
+                "p-0.5 border-b border-r border-dentist-border calendar-day",
                 !isCurrentMonth && "text-gray-400 bg-gray-50",
                 !isSelectable && "opacity-50 cursor-not-allowed",
                 isSelectable && "cursor-pointer hover:bg-dentist-light",
@@ -74,7 +74,7 @@ const MonthView: React.FC<MonthViewProps> = ({
             >
               <div className="flex flex-col h-full">
                 <div className={cn(
-                  "text-sm p-1 w-8 h-8 rounded-full flex items-center justify-center",
+                  "text-xs p-1 w-6 h-6 rounded-full flex items-center justify-center",
                   isSelectedDay && "bg-dentist-primary text-white",
                   isTodayDay && !isSelectedDay && "bg-dentist-light text-dentist-primary font-medium"
                 )}>
