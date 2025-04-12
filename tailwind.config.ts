@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -51,6 +52,14 @@ export default {
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
+				},
+				dentist: {
+					primary: '#1A73E8',  // Google Calendar blue
+					secondary: '#4285F4',
+					accent: '#8AB4F8',
+					light: '#E8F0FE',
+					border: '#DADCE0',
+					highlight: '#E4F7FB',
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
