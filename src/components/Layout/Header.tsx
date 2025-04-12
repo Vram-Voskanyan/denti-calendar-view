@@ -10,14 +10,14 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle
 } from "@/components/ui/navigation-menu";
-import { Tooth, Calendar } from "lucide-react";
+import { Calendar, Stethoscope } from "lucide-react";
 
 const Header = () => {
   return (
     <header className="border-b border-dentist-border bg-white">
       <div className="container mx-auto py-4 px-4 flex justify-between items-center">
         <div className="flex items-center space-x-2">
-          <Tooth className="w-8 h-8 text-dentist-primary" />
+          <Stethoscope className="w-8 h-8 text-dentist-primary" />
           <h1 className="text-xl font-bold text-dentist-primary">DentalCare Appointments</h1>
         </div>
         
