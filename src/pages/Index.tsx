@@ -37,14 +37,20 @@ const Index = () => {
     const loadDentists = async () => {
       const data = await fetchDentists();
       setDentists(data);
+      // Select first dentist by default if none is selected
+      if (data.length > 0 && !selectedDentist) {
+        setSelectedDentist(data[0].id);
+      }
     };
     
     loadDentists();
-  }, []);
+  }, [selectedDentist]);
   
   // Load available slots when date or dentist changes
   useEffect(() => {
     const loadAvailability = async () => {
+      if (!selectedDentist) return;
+      
       setIsLoadingSlots(true);
       setAvailableSlots([]);
       setSelectedTime(null);
@@ -122,12 +128,7 @@ const Index = () => {
   const showForm = selectedTime && !showConfirmation;
   
   return (
-    <div className="container mx-auto p-4">
-      <header className="mb-6">
-        <h1 className="text-3xl font-bold text-dentist-primary">Dental Appointment Scheduler</h1>
-        <p className="text-gray-600">Book your next dental appointment with ease</p>
-      </header>
-      
+    <div className="container mx-auto py-6 px-4">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Calendar and Time Slots Section */}
         <div className="lg:col-span-2">

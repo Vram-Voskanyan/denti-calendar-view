@@ -1,6 +1,6 @@
 
 import React from "react";
-import { format, startOfWeek, addDays, isSameDay } from "date-fns";
+import { format, startOfWeek, addDays, isSameDay, isWeekend, isBefore, isAfter, addBusinessDays } from "date-fns";
 import { cn } from "@/lib/utils";
 import { getMonthDays, isToday, isSameMonthDate } from "@/utils/dateUtils";
 
@@ -25,6 +25,18 @@ const MonthView: React.FC<MonthViewProps> = ({
   
   const weekDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
+  // Calculate date restrictions
+  const today = new Date();
+  const maxDate = addBusinessDays(today, 15);
+
+  const isDateSelectable = (date: Date) => {
+    return (
+      !isWeekend(date) && // Only weekdays (Monday to Friday)
+      !isBefore(date, today) && // Not before today
+      !isAfter(date, maxDate) // Not after maxDate (15 business days from today)
+    );
+  };
+
   return (
     <div className="w-full overflow-hidden">
       {/* Week day headers */}
@@ -45,6 +57,7 @@ const MonthView: React.FC<MonthViewProps> = ({
           const isCurrentMonth = isSameMonthDate(day, currentDate);
           const isSelectedDay = isSameDay(day, selectedDate);
           const isTodayDay = isToday(day);
+          const isSelectable = isDateSelectable(day);
           
           return (
             <div
@@ -52,10 +65,12 @@ const MonthView: React.FC<MonthViewProps> = ({
               className={cn(
                 "p-1 border-b border-r border-dentist-border calendar-day",
                 !isCurrentMonth && "text-gray-400 bg-gray-50",
+                !isSelectable && "opacity-50 cursor-not-allowed",
+                isSelectable && "cursor-pointer hover:bg-dentist-light",
                 isTodayDay && "today",
                 isSelectedDay && "selected"
               )}
-              onClick={() => onDateSelect(day)}
+              onClick={() => isSelectable ? onDateSelect(day) : null}
             >
               <div className="flex flex-col h-full">
                 <div className={cn(
@@ -65,7 +80,6 @@ const MonthView: React.FC<MonthViewProps> = ({
                 )}>
                   {format(day, "d")}
                 </div>
-                {/* This is where appointment indicators could be displayed */}
               </div>
             </div>
           );
