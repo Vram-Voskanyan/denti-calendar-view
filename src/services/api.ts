@@ -1,4 +1,3 @@
-
 import { toast } from "sonner";
 
 const API_BASE_URL = "https://dentist-appointment-server-production.up.railway.app";
@@ -31,6 +30,19 @@ export interface AppointmentRequest {
 export interface AppointmentResponse {
   appointmentId: string;
   status: string;
+}
+
+export interface Appointment {
+  _id: string;
+  dentist_id: string;
+  date: string;
+  time: string;
+  patient_name: string;
+  patient_email: string;
+  patient_phone: string;
+  status: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export const fetchDentists = async (): Promise<Dentist[]> => {
@@ -95,5 +107,21 @@ export const bookAppointment = async (
     console.error("Error booking appointment:", error);
     toast.error("Failed to book appointment. Please try again later.");
     return null;
+  }
+};
+
+export const fetchAppointments = async (): Promise<Appointment[]> => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/appointments`);
+    
+    if (!response.ok) {
+      throw new Error(`Failed to fetch appointments: ${response.status}`);
+    }
+    
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching appointments:", error);
+    toast.error("Failed to load appointments. Please try again later.");
+    return [];
   }
 };

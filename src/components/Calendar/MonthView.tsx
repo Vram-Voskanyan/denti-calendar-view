@@ -38,7 +38,7 @@ const MonthView: React.FC<MonthViewProps> = ({
   };
 
   return (
-    <div className="w-full overflow-hidden">
+    <div className="w-full overflow-hidden h-[340px] flex flex-col">
       {/* Week day headers */}
       <div className="grid grid-cols-7 border-b border-dentist-border">
         {weekDays.map((day) => (
@@ -52,7 +52,7 @@ const MonthView: React.FC<MonthViewProps> = ({
       </div>
       
       {/* Calendar days */}
-      <div className="grid grid-cols-7 h-full">
+      <div className="grid grid-cols-7 flex-1">
         {calendarDays.map((day, index) => {
           const isCurrentMonth = isSameMonthDate(day, currentDate);
           const isSelectedDay = isSameDay(day, selectedDate);

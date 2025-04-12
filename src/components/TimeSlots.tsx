@@ -16,15 +16,17 @@ const TimeSlots: React.FC<TimeSlotsProps> = ({
 }) => {
   if (!availableSlots.length) {
     return (
-      <div className="py-4 px-2 text-center">
-        <p className="text-gray-500">No available time slots for this day.</p>
-        <p className="text-sm text-gray-400 mt-1">Please select another date or dentist.</p>
+      <div className="py-4 px-2 text-center h-[340px] flex items-center justify-center">
+        <div>
+          <p className="text-gray-500">No available time slots for this day.</p>
+          <p className="text-sm text-gray-400 mt-1">Please select another date or dentist.</p>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2 p-2 max-h-[400px] overflow-y-auto">
+    <div className="grid grid-cols-2 gap-2 p-2 h-[340px] overflow-y-auto">
       {availableSlots.map((time) => (
         <div
           key={time}

@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { format } from "date-fns";
 import { toast } from "sonner";
@@ -155,13 +154,11 @@ const Index = () => {
               <div className="grid md:grid-cols-2 gap-4">
                 <div className="p-4">
                   <h3 className="text-lg font-medium mb-2">Select Date</h3>
-                  <div className="max-w-xs mx-auto">
-                    <MonthView
-                      currentDate={currentDate}
-                      selectedDate={selectedDate}
-                      onDateSelect={handleDateSelect}
-                    />
-                  </div>
+                  <MonthView
+                    currentDate={currentDate}
+                    selectedDate={selectedDate}
+                    onDateSelect={handleDateSelect}
+                  />
                 </div>
                 
                 <div className="p-4 border-t md:border-t-0 md:border-l border-dentist-border">
@@ -169,7 +166,7 @@ const Index = () => {
                     Available Time Slots for {format(selectedDate, "MMMM d, yyyy")}
                   </h3>
                   {isLoadingSlots ? (
-                    <div className="py-8 text-center">
+                    <div className="flex items-center justify-center h-[340px]">
                       <p className="text-gray-500">Loading available time slots...</p>
                     </div>
                   ) : (
