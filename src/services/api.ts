@@ -34,7 +34,9 @@ export interface AppointmentResponse {
 
 export interface Appointment {
   _id: string;
-  dentist_id: string;
+  dentist_id: {
+    name: string;
+  };
   date: string;
   time: string;
   patient_name: string;

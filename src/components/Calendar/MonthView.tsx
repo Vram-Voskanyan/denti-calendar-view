@@ -1,4 +1,3 @@
-
 import React from "react";
 import { format, startOfWeek, addDays, isSameDay, isWeekend, isBefore, isAfter, addBusinessDays } from "date-fns";
 import { cn } from "@/lib/utils";
@@ -38,7 +37,7 @@ const MonthView: React.FC<MonthViewProps> = ({
   };
 
   return (
-    <div className="w-full overflow-hidden h-[300px] flex flex-col">
+    <div className="w-full overflow-hidden h-[540px] flex flex-col">
       {/* Week day headers */}
       <div className="grid grid-cols-7 border-b border-dentist-border">
         {weekDays.map((day) => (
@@ -52,7 +51,7 @@ const MonthView: React.FC<MonthViewProps> = ({
       </div>
       
       {/* Calendar days */}
-      <div className="grid grid-cols-7 flex-1 overflow-y-auto">
+      <div className="grid grid-cols-7 flex-1">
         {calendarDays.map((day, index) => {
           const isCurrentMonth = isSameMonthDate(day, currentDate);
           const isSelectedDay = isSameDay(day, selectedDate);

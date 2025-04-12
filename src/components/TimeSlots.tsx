@@ -1,4 +1,3 @@
-
 import React from "react";
 import { cn } from "@/lib/utils";
 import { formatDisplayTime } from "@/utils/dateUtils";
@@ -16,7 +15,7 @@ const TimeSlots: React.FC<TimeSlotsProps> = ({
 }) => {
   if (!availableSlots.length) {
     return (
-      <div className="py-4 px-2 text-center h-[300px] flex items-center justify-center">
+      <div className="py-4 px-2 text-center h-[500px] flex items-center justify-center">
         <div>
           <p className="text-gray-500">No available time slots for this day.</p>
           <p className="text-sm text-gray-400 mt-1">Please select another date or dentist.</p>
@@ -26,7 +25,7 @@ const TimeSlots: React.FC<TimeSlotsProps> = ({
   }
 
   return (
-    <div className="grid grid-cols-2 gap-2 p-2 h-[300px] overflow-y-auto">
+    <div className="grid grid-cols-2 gap-2 p-2 h-[500px]">
       {availableSlots.map((time) => (
         <div
           key={time}

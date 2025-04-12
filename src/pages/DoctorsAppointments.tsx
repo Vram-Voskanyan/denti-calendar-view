@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { format, parseISO } from "date-fns";
 import { useToast } from "@/components/ui/use-toast";
@@ -49,11 +48,6 @@ const DoctorsAppointments = () => {
     }
   };
   
-  const getDentistName = (dentistId: string) => {
-    const dentist = dentists.find(d => d.id === dentistId);
-    return dentist ? dentist.name : "Unknown Doctor";
-  };
-  
   return (
     <div className="container mx-auto py-6 px-4">
       <Card className="shadow-md">
@@ -97,7 +91,7 @@ const DoctorsAppointments = () => {
                         {appointment.patient_name}
                       </TableCell>
                       <TableCell>
-                        {getDentistName(appointment.dentist_id)}
+                        {appointment.dentist_id.name}
                       </TableCell>
                       <TableCell>
                         <div>{appointment.patient_email}</div>

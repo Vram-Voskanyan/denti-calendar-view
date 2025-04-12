@@ -166,7 +166,7 @@ const Index = () => {
                     Available Time Slots for {format(selectedDate, "MMMM d, yyyy")}
                   </h3>
                   {isLoadingSlots ? (
-                    <div className="flex items-center justify-center h-[340px]">
+                    <div className="flex items-center justify-center h-[450px]">
                       <p className="text-gray-500">Loading available time slots...</p>
                     </div>
                   ) : (
